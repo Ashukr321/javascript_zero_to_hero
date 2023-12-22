@@ -1,37 +1,60 @@
-//  promicess in  the js
-// this is very important question in the js
-// promicess is just similar to the normal object
-// that take a callback functoin and that callback function take 2 argument
-//  resolve or reject
-// state of the promices ??
-// resolve , reject or we can say pending state
-// how to create  the promices object
-//   here promices a object so we have to console it
+// promicess 
 
-//  how to creata promices
-// promices is  asynchronus task
-// microtask
+// promicess executed in the microtask queue  
+//  this have higher priority then the callbasck queues 
 
-const promise = new Promise((resolve, reject) => {
-  resolve("promise resolve successfully ");
-  reject("prpmicse rejected");
-});
+//promicess represent the evntaul compliation of the future values that represent the asynchronous task 
 
 
-//  how to cosume the promices
-//  as we know that object have  their own method
-// like window object have their own methods similar promices have  2 methods
-// .then and catch
-//  both these two methods will take a callback function as we know that callback fucntion
-// goes into the callstack
+// state of the promices 
+// pending 
+// fulfiled 
+// rejected 
+// promicess solve the problme of the callback hell  
 
-promise
-  .then(data => {
-    console.log(data);
+
+// const api  = 'https://jsonplaceholder.typicode.com/posts';
+// const promices = fetch(api);
+
+// // to consume this 
+// promices.then( async(data)=>{
+//   const res = await data.json();
+//   console.log(res);
+// }).catch((error)=>{
+//   console.log('Opss', error)
+// })
+
+
+// const promiseA = new Promise((resolve, reject) => {
+//   resolve(777);
+// });
+// promiseA.then((data)=>{
+//   console.log(data);
+// })
+
+const cart = ["apple", "mango", "orange"];
+
+var promise = createOrder(cart);
+
+// consume the promices 
+promise.then((orderId) =>{
+  console.log(orderId);
+}).catch((error)=>{
+  console.log(error);
+})
+
+
+
+//create the promices 
+function createOrder (cart){
+  const pr = new Promise ((resolve,reject)=>{
+      // validate cart 
+      // createorder 
+      if(!cart){
+        const err = new Error("cart is not valid");
+        reject(err);
+      }
+      
   })
-  .catch(() => {
-    console.log("promise is rejected !");
-  });
-
-// we can also nested the .then .then this create problem and difficult to manage it
-//  to solve this issue introduce a new concept that is know as async and await
+  return pr;
+}
